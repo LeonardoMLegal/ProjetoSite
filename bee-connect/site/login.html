@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar — Bee Connect</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plaster&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="logEstilo.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header class="header-cadastro">
+    <div class="topo">
+      <a href="index.html" class="marca plaster-regular">Bee Connect</a>
+      <nav class="links-topo">
+        <a href="index.html">Início</a>
+        <a href="cadastro.html" class="botao-nav">Cadastrar</a>
+      </nav>
+    </div>
+
+    <div class="apresentacao">
+      <h1>Entre na sua conta</h1>
+      <p class="subtexto">Use o e-mail corporativo e a senha que você cadastrou.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="secao-cadastro secao-form">
+      <div class="cartao-form" data-tipo="requisitante">
+        <div class="painel">
+          <h2>Entrar</h2>
+          <p class="intro">Ainda não tem conta? <a href="cadastro.html">Cadastre sua empresa</a>.</p>
+
+          <p class="sucesso falha" role="alert" hidden></p>
+
+          <form class="formulario" novalidate>
+            <div class="campo">
+              <label for="log-tipo">*Tipo de conta</label>
+              <select id="log-tipo" name="tipo" required aria-describedby="log-tipo-erro">
+                <option value="requisitante">Empresa requisitante</option>
+                <option value="prestadora">Empresa prestadora</option>
+              </select>
+              <p class="erro" id="log-tipo-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="log-email">*E-mail corporativo</label>
+              <input id="log-email" name="email" type="email" autocomplete="email"
+                     placeholder="contato@suaempresa.com.br"
+                     required aria-describedby="log-email-erro">
+              <p class="erro" id="log-email-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="log-senha">*Senha</label>
+              <input id="log-senha" name="senha" type="password" autocomplete="current-password"
+                     required aria-describedby="log-senha-erro">
+              <p class="erro" id="log-senha-erro"></p>
+            </div>
+
+            <button type="submit" class="botao botao-primario botao-cheio">Entrar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="plaster-regular">Bee Connect</p>
+    <p>Conectando quem precisa a quem faz.</p>
+  </footer>
+
+  <script src="login.js"></script>
+</body>
+</html>

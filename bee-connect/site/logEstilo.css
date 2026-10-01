@@ -179,6 +179,24 @@
   font-size: 0.95rem;
 }
 
+.sucesso.falha {
+  background-color: #FDECEA;
+  color: #B3261E;
+}
+
+/* ===== Login / painel ===== */
+.intro a { font-weight: 600; }
+
+.dados-conta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 16px;
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+}
+.dados-conta dt { font-weight: 600; }
+.dados-conta dd { margin: 0; overflow-wrap: anywhere; }
+
 /* ===== Responsivo ===== */
 @media (max-width: 640px) {
   .header-cadastro .apresentacao { padding: 32px 20px 0; }

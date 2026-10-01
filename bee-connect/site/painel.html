@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minha conta — Bee Connect</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plaster&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="logEstilo.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header class="header-cadastro">
+    <div class="topo">
+      <a href="index.html" class="marca plaster-regular">Bee Connect</a>
+      <nav class="links-topo">
+        <a href="index.html">Início</a>
+      </nav>
+    </div>
+
+    <div class="apresentacao">
+      <h1 id="saudacao">Minha conta</h1>
+      <p class="subtexto">Você está conectado à colmeia.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="secao-cadastro secao-form">
+      <div class="cartao-form" id="cartao" data-tipo="requisitante">
+        <div class="painel">
+          <h2>Dados da empresa</h2>
+          <p class="intro" id="tipo-conta"></p>
+
+          <dl class="dados-conta">
+            <dt>Empresa</dt><dd id="d-nome"></dd>
+            <dt>CNPJ</dt><dd id="d-cnpj"></dd>
+            <dt>E-mail</dt><dd id="d-email"></dd>
+          </dl>
+
+          <button type="button" id="sair" class="botao botao-primario botao-cheio">Sair</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="plaster-regular">Bee Connect</p>
+    <p>Conectando quem precisa a quem faz.</p>
+  </footer>
+
+  <script src="painel.js"></script>
+</body>
+</html>

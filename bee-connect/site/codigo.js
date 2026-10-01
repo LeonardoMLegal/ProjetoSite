@@ -157,8 +157,11 @@ document.querySelectorAll('.formulario').forEach((form) => {
     });
   });
 
-  form.addEventListener('submit', (evento) => {
+  form.addEventListener('submit', async (evento) => {
     evento.preventDefault(); // impede a página de recarregar
+
+    const painel = form.closest('.painel');
+    mostrarAviso(painel, '');
 
     let primeiroInvalido = null;
     campos.forEach((campo) => {
@@ -170,23 +173,66 @@ document.querySelectorAll('.formulario').forEach((form) => {
       return;
     }
 
-    const painel = form.closest('.painel');
     const dados = Object.fromEntries(new FormData(form));
     dados.tipo = painel.dataset.tipo;
+    dados.termos = form.querySelector('[name="termos"]').checked; // booleano de verdade
 
-    // PRÓXIMO PASSO: enviar `dados` para o back-end, por exemplo:
-    // fetch('/api/cadastro', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(dados),
-    // });
-    const { senha, ...dadosSemSenha } = dados; // nunca mostre a senha no console
-    console.log('Cadastro pronto para enviar:', dadosSemSenha);
+    const botao = form.querySelector('button[type="submit"]');
+    botao.disabled = true;
 
-    form.reset();
-    const aviso = painel.querySelector('.sucesso');
-    aviso.textContent = 'Cadastro enviado com sucesso!';
-    aviso.hidden = false;
-    aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    try {
+      const resposta = await fetch('/api/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados),
+      });
+      const resultado = await resposta.json().catch(() => ({}));
+
+      if (!resposta.ok) {
+        mostrarErrosDoServidor(form, painel, resultado.erros);
+        return;
+      }
+
+      form.reset();
+      mostrarAviso(painel, 'Cadastro enviado com sucesso!');
+    } catch (erro) {
+      mostrarAviso(painel, 'Não foi possível conectar ao servidor. Tente novamente.', true);
+    } finally {
+      botao.disabled = false;
+    }
   });
 });
+
+/* ---------- 5. Respostas do servidor ---------- */
+
+// Aviso no topo do painel. falha = true usa o estilo de erro.
+function mostrarAviso(painel, mensagem, falha = false) {
+  const aviso = painel.querySelector('.sucesso');
+  aviso.textContent = mensagem;
+  aviso.classList.toggle('falha', falha);
+  aviso.hidden = mensagem === '';
+  if (mensagem) aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// O servidor devolve { erros: { campo: "mensagem" } }.
+// Campos conhecidos mostram o erro embaixo do input; o resto vira aviso geral.
+function mostrarErrosDoServidor(form, painel, erros = {}) {
+  let primeiroComErro = null;
+  let mensagemGeral = '';
+
+  Object.entries(erros).forEach(([nome, mensagem]) => {
+    const campo = form.querySelector(`[name="${nome}"]`);
+    if (!campo) {
+      mensagemGeral = mensagem;
+      return;
+    }
+    document.getElementById(campo.id + '-erro').textContent = mensagem;
+    campo.setAttribute('aria-invalid', 'true');
+    if (!primeiroComErro) primeiroComErro = campo;
+  });
+
+  if (primeiroComErro) primeiroComErro.focus();
+  if (mensagemGeral || !primeiroComErro) {
+    mostrarAviso(painel, mensagemGeral || 'Não foi possível concluir o cadastro.', true);
+  }
+}
