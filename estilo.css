@@ -1,46 +1,370 @@
-header div{
-  background-color: #FFCA28;
-  max-width: 100%;
-  height: 300px;
-  border-radius: 8px;
-}
-header nav {
-  display: flex;               /* coloca os links em linha */
-  justify-content: right;     /* centraliza horizontalmente */
-  gap: 20px;                   /* espaço entre os links */
-}
-
-header a {
-  font-family: "Plaster", system-ui;
-  text-decoration: none;
-  color: rgb(73, 87, 124);
-  padding: 8px 12px;
-  border-radius: 4px;
+/* ===== Bee Connect — tokens ===== */
+:root {
+  --honey: #FFC107;
+  --honey-deep: #FF8F00;
+  --honey-light: #FFE9A8;
+  --navy: #49577C;
+  --navy-deep: #2E3750;
+  --charcoal: #23252B;
+  --cream: #FFF8E9;
+  --white: #FFFFFF;
+  --linha: rgba(46, 55, 80, 0.12);
+  --sombra: 0 18px 40px rgba(35, 37, 43, 0.16);
+  --raio: 18px;
 }
 
-header a:hover {
-  background-color: #FFC107
-  /*color: rgb(255, 213, 0);*/
-}
-header h1{
-  font-family: "Plaster", system-ui;
-  margin-left: 730px;  /* empurra para a direita */
-  margin-top: 35px;   /* empurra para baixo */
-  color: rgb(73, 87, 124);
+* { box-sizing: border-box; }
 
+body {
+  margin: 0;
+  font-family: "Sora", system-ui, sans-serif;
+  color: var(--navy-deep);
+  background: var(--cream);
 }
-.logo {
-  position: absolute;
-  top: 15px;     /* distância do topo */
-  margin-left: 600px;
-  /*left: 300px;     distância da esquerda */
-  width: 150px;
-  height: auto;
-}
+
 .plaster-regular {
   font-family: "Plaster", system-ui;
-  font-weight: 100;
+  font-weight: 400;
   font-style: normal;
 }
 
+a { color: inherit; }
 
+h1, h2, h3 { line-height: 1.15; margin: 0; }
+
+/* ===== Header ===== */
+header {
+  position: relative;
+  background: linear-gradient(160deg, var(--honey) 0%, var(--honey-deep) 100%);
+  overflow: hidden;
+  padding-bottom: 150px; /* espaço para o skyline, longe do texto */
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: var(--navy-deep);
+}
+
+.marca .logo {
+  width: 60px;
+  height: auto;
+}
+
+.links-topo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header nav a {
+  text-decoration: none;
+  color: var(--navy-deep);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.links-topo a:hover { background-color: rgba(46, 55, 80, 0.08); }
+
+.botao-nav {
+  background-color: var(--navy-deep);
+  color: var(--white) !important;
+}
+
+.botao-nav:hover { background-color: var(--navy) !important; }
+
+.apresentacao {
+  position: relative;
+  z-index: 2;
+  padding: 64px 48px 80px;
+  max-width: 640px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: var(--navy-deep);
+  opacity: 0.75;
+}
+
+.apresentacao h1 {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  color: var(--navy-deep);
+  margin-bottom: 18px;
+}
+
+.subtexto {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--navy-deep);
+  opacity: 0.9;
+  margin-bottom: 32px;
+}
+
+.cta-hero { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.botao {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.botao:hover { transform: translateY(-2px); }
+
+.botao-primario {
+  background-color: var(--navy-deep);
+  color: var(--white);
+}
+.botao-primario:hover { background-color: var(--navy); }
+
+.botao-secundario {
+  background-color: transparent;
+  border-color: var(--navy-deep);
+  color: var(--navy-deep);
+}
+.botao-secundario:hover { background-color: rgba(46, 55, 80, 0.08); }
+
+/* ===== Skyline feito só com CSS, com efeito de distância ===== */
+.skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 0 32px;
+  z-index: 1;
+  /* névoa suave separando o texto do horizonte */
+  -webkit-mask-image: linear-gradient(to top, black 55%, transparent 100%);
+          mask-image: linear-gradient(to top, black 55%, transparent 100%);
+}
+
+.predio {
+  background-color: var(--navy);
+  opacity: 0.28;
+  border-radius: 3px 3px 0 0;
+  /* janelas em formato de favo de mel, feitas só com gradientes CSS */
+  background-image:
+    linear-gradient(30deg, var(--honey-light) 12%, transparent 12.5%, transparent 87%, var(--honey-light) 87.5%, var(--honey-light)),
+    linear-gradient(150deg, var(--honey-light) 12%, transparent 12.5%, transparent 87%, var(--honey-light) 87.5%, var(--honey-light)),
+    linear-gradient(30deg, var(--honey-light) 12%, transparent 12.5%, transparent 87%, var(--honey-light) 87.5%, var(--honey-light)),
+    linear-gradient(150deg, var(--honey-light) 12%, transparent 12.5%, transparent 87%, var(--honey-light) 87.5%, var(--honey-light)),
+    linear-gradient(60deg, var(--honey-light) 25%, transparent 25.5%, transparent 75%, var(--honey-light) 75%, var(--honey-light)),
+    linear-gradient(60deg, var(--honey-light) 25%, transparent 25.5%, transparent 75%, var(--honey-light) 75%, var(--honey-light));
+  background-size: 16px 28px;
+  background-position: 0 0, 0 0, 8px 14px, 8px 14px, 0 0, 8px 14px;
+  background-blend-mode: soft-light;
+}
+
+/* prédios mais próximos: um pouco mais nítidos e escuros, dão profundidade */
+.p2, .p4, .p6, .p8 { opacity: 0.4; }
+
+.p1 { width: 6%;  height: 32px; }
+.p2 { width: 8%;  height: 48px; }
+.p3 { width: 5%;  height: 24px; }
+.p4 { width: 9%;  height: 62px; }
+.p5 { width: 6%;  height: 38px; }
+.p6 { width: 10%; height: 72px; }
+.p7 { width: 6%;  height: 34px; }
+.p8 { width: 8%;  height: 52px; }
+.p9 { width: 6%;  height: 28px; }
+
+/* ===== Cards flutuantes de cadastro ===== */
+main { position: relative; z-index: 3; }
+
+.secao-cadastro {
+  margin-top: -60px;
+  padding: 0 48px 80px;
+  text-align: center;
+}
+
+.secao-cadastro h2 {
+  font-size: 1.8rem;
+  margin-bottom: 32px;
+  color: var(--navy-deep);
+}
+
+.cards-flutuantes {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-cadastro {
+  background-color: var(--white);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 36px;
+  width: 340px;
+  text-align: left;
+  border-top: 6px solid transparent;
+  transition: transform 0.2s ease;
+}
+
+.card-cadastro:hover { transform: translateY(-6px); }
+
+.card-contratante { border-top-color: var(--navy-deep); }
+.card-prestadora { border-top-color: var(--honey-deep); }
+
+.icone-card {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card-contratante .icone-card { background-color: rgba(46, 55, 80, 0.1); color: var(--navy-deep); }
+.card-prestadora .icone-card { background-color: rgba(255, 143, 0, 0.14); color: var(--honey-deep); }
+
+.icone-card svg { width: 30px; height: 30px; }
+
+.card-cadastro h3 { font-size: 1.25rem; margin-bottom: 10px; }
+
+.card-cadastro p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--navy-deep);
+  opacity: 0.85;
+  margin-bottom: 22px;
+  min-height: 82px;
+}
+
+.botao-card {
+  display: block;
+  text-align: center;
+  color: var(--white);
+}
+
+.card-contratante .botao-card { background-color: var(--navy-deep); }
+.card-contratante .botao-card:hover { background-color: var(--navy); }
+.card-prestadora .botao-card { background-color: var(--honey-deep); }
+.card-prestadora .botao-card:hover { background-color: #E67E00; }
+
+/* ===== Como funciona ===== */
+.secao-como-funciona {
+  padding: 60px 48px 90px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.secao-como-funciona h2 { font-size: 1.8rem; margin-bottom: 44px; }
+
+.etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: left;
+}
+
+.etapas li { position: relative; padding-left: 8px; }
+
+.numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--honey);
+  color: var(--navy-deep);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.etapas h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.etapas p { font-size: 0.92rem; line-height: 1.55; opacity: 0.85; margin: 0; }
+
+/* ===== Sobre ===== */
+.secao-sobre {
+  background-color: var(--navy-deep);
+  color: var(--white);
+  padding: 80px 48px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.texto-sobre { max-width: 520px; }
+.texto-sobre h2 { font-size: 1.8rem; margin-bottom: 18px; }
+.texto-sobre p { line-height: 1.65; opacity: 0.9; margin: 0 0 14px; }
+
+/* favo de mel decorativo, feito só com CSS (hexágonos via clip-path) */
+.favo {
+  --hex: 46px;
+  display: grid;
+  grid-template-columns: repeat(3, var(--hex));
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.favo span {
+  width: var(--hex);
+  height: calc(var(--hex) * 1.1547);
+  background-color: var(--honey);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+.favo span:nth-child(2) { background-color: var(--honey-deep); margin-top: 26px; }
+.favo span:nth-child(4) { background-color: var(--honey-deep); margin-top: -26px; }
+.favo span:nth-child(5) { background-color: var(--honey-light); }
+.favo span:nth-child(6) { margin-top: 26px; }
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--charcoal);
+  color: var(--white);
+  text-align: center;
+  padding: 32px 24px;
+}
+
+footer p { margin: 4px 0; opacity: 0.85; font-size: 0.9rem; }
+footer .plaster-regular { font-size: 1.2rem; opacity: 1; margin-bottom: 6px; }
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+  .etapas { grid-template-columns: 1fr; }
+  .secao-sobre { flex-direction: column; text-align: center; }
+  .texto-sobre { text-align: left; }
+}
+
+@media (max-width: 640px) {
+  .topo, .apresentacao, .secao-cadastro, .secao-como-funciona, .secao-sobre {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .marca span { display: none; }
+  .cards-flutuantes { flex-direction: column; align-items: center; }
+  .card-cadastro { width: 100%; max-width: 360px; }
+  .skyline { padding: 0 16px; }
+}

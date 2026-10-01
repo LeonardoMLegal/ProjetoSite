@@ -2,21 +2,123 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bee Connect</title>
     <link rel="stylesheet" href="estilo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plaster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plaster&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+<body>
+
 <header>
+    <nav class="topo">
+        <a class="marca" href="#top">
+            <img src="Imagens/BeeConnectLogo.png" alt="Bee Connect logo" class="logo">
+            <span class="plaster-regular">Bee Connect</span>
+        </a>
+        <div class="links-topo">
+            <a href="cadastro.html">Entrar</a>
+            <a href="cadastro.html" class="botao-nav">Cadastrar</a>
+        </div>
+    </nav>
+
     <div class="apresentacao">
-        <nav>
-            <a href="Sign-in">Sign in </a>
-            <a href="Sign-up">Sign up</a>
-        </nav>
-        <h1>Bee Connect Brasil.</h1>
-        <img src="Imagens\BeeConnectLogo.png" alt="Bee Connect logo" class="logo"> 
+        <div class="texto-hero">
+            <p class="eyebrow">A colmeia que une empresas</p>
+            <h1 class="plaster-regular">Conectando quem precisa a quem faz.</h1>
+            <p class="subtexto">A Bee Connect aproxima empresas que precisam de serviços das prestadoras que sabem entregá-los — como um enxame, cada uma na sua função.</p>
+            <!--<div class="cta-hero">
+                <a href="cadastro.html" class="botao botao-primario">Quero contratar</a>
+                <a href="cadastro.html" class="botao botao-secundario">Quero prestar serviços</a>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="skyline" aria-hidden="true">
+        <div class="predio p1"></div>
+        <div class="predio p2"></div>
+        <div class="predio p3"></div>
+        <div class="predio p4"></div>
+        <div class="predio p5"></div>
+        <div class="predio p6"></div>
+        <div class="predio p7"></div>
+        <div class="predio p8"></div>
+        <div class="predio p9"></div>
     </div>
 </header>
 
+<main>
+    <section id="cadastro" class="secao-cadastro">
+        <h2>Escolha o seu lado da colmeia</h2>
+        <div class="cards-flutuantes">
+            <article class="card-cadastro card-contratante">
+                <div class="icone-card">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="14" y="22" width="36" height="34" rx="3" stroke="currentColor" stroke-width="3"/>
+                        <path d="M24 22V16a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M14 32h36" stroke="currentColor" stroke-width="3"/>
+                        <circle cx="32" cy="41" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>Empresa contratante</h3>
+                <p>Sua empresa precisa de mão de obra ou de um serviço específico? Encontre prestadoras avaliadas e feche negócio sem burocracia.</p>
+                <a href="cadastro.html" class="botao botao-card">Cadastrar minha empresa</a>
+            </article>
+
+            <article class="card-cadastro card-prestadora">
+                <div class="icone-card">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 14l10 10-6 6-10-10z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M34 24 14 44a4 4 0 0 0 6 6l20-20" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                        <circle cx="18" cy="46" r="2.5" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>Empresa prestadora</h3>
+                <p>Ofereça o que você faz de melhor para outras empresas. Defina sua forma de cobrança e receba solicitações direto na sua área.</p>
+                <a href="cadastro.html" class="botao botao-card">Cadastrar como prestadora</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="secao-como-funciona">
+        <h2>Como a colmeia funciona</h2>
+        <ol class="etapas">
+            <li>
+                <span class="numero">1</span>
+                <h3>Cadastre sua empresa</h3>
+                <p>Informe CNPJ e e-mail corporativo. Contratante ou prestadora, o cadastro leva poucos minutos.</p>
+            </li>
+            <li>
+                <span class="numero">2</span>
+                <h3>Encontre a combinação certa</h3>
+                <p>Contratantes buscam por serviço; prestadoras aparecem com sua forma de cobrança já definida.</p>
+            </li>
+            <li>
+                <span class="numero">3</span>
+                <h3>Feche o serviço</h3>
+                <p>Combine prazo, valor e forma de pagamento diretamente com a empresa escolhida.</p>
+            </li>
+        </ol>
+    </section>
+
+    <section class="secao-sobre">
+        <div class="favo" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+        <div class="texto-sobre">
+            <h2>Sobre a Bee Connect</h2>
+            <p>Assim como uma colmeia depende de cada abelha cumprindo seu papel, o mercado de serviços entre empresas depende de boas conexões. A Bee Connect nasceu para ser esse ponto de encontro: simples para quem contrata, direto para quem presta o serviço.</p>
+            <p>Nada de intermediários pesados ou processos longos — só a empresa certa, na hora certa.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p class="plaster-regular">Bee Connect</p>
+    <p>&copy; 2026 Bee Connect Brasil. Todos os direitos reservados.</p>
+</footer>
+
+</body>
 </html>
