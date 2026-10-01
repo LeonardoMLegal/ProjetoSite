@@ -1,0 +1,46 @@
+header div{
+  background-color: #FFCA28;
+  max-width: 100%;
+  height: 300px;
+  border-radius: 8px;
+}
+header nav {
+  display: flex;               /* coloca os links em linha */
+  justify-content: right;     /* centraliza horizontalmente */
+  gap: 20px;                   /* espaço entre os links */
+}
+
+header a {
+  font-family: "Plaster", system-ui;
+  text-decoration: none;
+  color: rgb(73, 87, 124);
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+header a:hover {
+  background-color: #FFC107
+  /*color: rgb(255, 213, 0);*/
+}
+header h1{
+  font-family: "Plaster", system-ui;
+  margin-left: 730px;  /* empurra para a direita */
+  margin-top: 35px;   /* empurra para baixo */
+  color: rgb(73, 87, 124);
+
+}
+.logo {
+  position: absolute;
+  top: 15px;     /* distância do topo */
+  margin-left: 600px;
+  /*left: 300px;     distância da esquerda */
+  width: 150px;
+  height: auto;
+}
+.plaster-regular {
+  font-family: "Plaster", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+
