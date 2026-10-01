@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro — Bee Connect</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plaster&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- 1º o estilo geral do site, 2º os ajustes só desta página -->
+  <link rel="stylesheet" href="logEstilo.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <header class="header-cadastro">
+    <div class="topo">
+      <a href="index.html" class="marca plaster-regular">Bee Connect</a>
+      <nav class="links-topo">
+        <a href="index.html">Início</a>
+        <a href="login.html" class="botao-nav">Entrar</a>
+      </nav>
+    </div>
+
+    <div class="apresentacao">
+      <h1>Crie a conta da sua empresa</h1>
+      <p class="subtexto">Escolha como sua empresa vai usar o Bee Connect. Dá para trocar de opção antes de enviar.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="secao-cadastro secao-form">
+      <div class="cartao-form" data-tipo="requisitante">
+
+        <!-- Abas: escolhem qual formulário aparece -->
+        <div class="abas" role="tablist" aria-label="Tipo de empresa">
+          <button type="button" class="aba aba-requisitante" role="tab"
+                  id="aba-requisitante" data-tipo="requisitante"
+                  aria-controls="painel-requisitante" aria-selected="true">
+            <strong>Empresa requisitante</strong>
+            <span>Quero contratar serviços</span>
+          </button>
+          <button type="button" class="aba aba-prestadora" role="tab"
+                  id="aba-prestadora" data-tipo="prestadora"
+                  aria-controls="painel-prestadora" aria-selected="false" tabindex="-1">
+            <strong>Empresa prestadora</strong>
+            <span>Quero oferecer serviços</span>
+          </button>
+        </div>
+
+        <!-- ===== Formulário: requisitante ===== -->
+        <div class="painel" id="painel-requisitante" data-tipo="requisitante"
+             role="tabpanel" aria-labelledby="aba-requisitante">
+          <h2>Cadastro de empresa requisitante</h2>
+          <p class="intro">Para empresas que precisam contratar serviços.</p>
+
+          <p class="sucesso" role="status" hidden></p>
+
+          <form class="formulario" novalidate>
+            <div class="campo">
+              <label for="req-nome">*Nome da empresa</label>
+              <input id="req-nome" name="nome" type="text" autocomplete="organization"
+                     required aria-describedby="req-nome-erro">
+              <p class="erro" id="req-nome-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="req-cnpj">*CNPJ</label>
+              <input id="req-cnpj" name="cnpj" type="text" autocomplete="off"
+                     autocapitalize="characters" placeholder="00.000.000/0000-00" maxlength="18"
+                     data-mascara="cnpj" data-validar="cnpj"
+                     required aria-describedby="req-cnpj-erro">
+              <p class="erro" id="req-cnpj-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="req-email">*E-mail corporativo</label>
+              <input id="req-email" name="email" type="email" autocomplete="email"
+                     placeholder="contato@suaempresa.com.br" data-validar="email"
+                     required aria-describedby="req-email-erro">
+              <p class="erro" id="req-email-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="req-senha">*Senha</label>
+              <input id="req-senha" name="senha" type="password" autocomplete="new-password"
+                     placeholder="Mínimo de 8 caracteres" data-validar="senha"
+                     required aria-describedby="req-senha-erro">
+              <p class="erro" id="req-senha-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label class="termos">
+                <input id="req-termos" name="termos" type="checkbox" required aria-describedby="req-termos-erro">
+                <span>*Li e aceito os termos de uso do Bee Connect.</span>
+              </label>
+              <p class="erro" id="req-termos-erro"></p>
+            </div>
+
+            <button type="submit" class="botao botao-primario botao-cheio">Criar conta de requisitante</button>
+          </form>
+        </div>
+
+        <!-- ===== Formulário: prestadora ===== -->
+        <div class="painel" id="painel-prestadora" data-tipo="prestadora"
+             role="tabpanel" aria-labelledby="aba-prestadora" hidden>
+          <h2>Cadastro de empresa prestadora</h2>
+          <p class="intro">Para empresas que oferecem serviços.</p>
+
+          <p class="sucesso" role="status" hidden></p>
+
+          <form class="formulario" novalidate>
+            <div class="campo">
+              <label for="pre-nome">*Nome da empresa</label>
+              <input id="pre-nome" name="nome" type="text" autocomplete="organization"
+                     required aria-describedby="pre-nome-erro">
+              <p class="erro" id="pre-nome-erro"></p>
+            </div>
+
+            <div class="linha-campos">
+              <div class="campo">
+                <label for="pre-cnpj">*CNPJ</label>
+                <input id="pre-cnpj" name="cnpj" type="text" autocomplete="off"
+                       autocapitalize="characters" placeholder="00.000.000/0000-00" maxlength="18"
+                       data-mascara="cnpj" data-validar="cnpj"
+                       required aria-describedby="pre-cnpj-erro">
+                <p class="erro" id="pre-cnpj-erro"></p>
+              </div>
+
+              <div class="campo">
+                <label for="pre-telefone">*Telefone</label>
+                <input id="pre-telefone" name="telefone" type="tel" autocomplete="tel"
+                       placeholder="(41) 99999-9999" maxlength="15"
+                       data-mascara="telefone" data-validar="telefone"
+                       required aria-describedby="pre-telefone-erro">
+                <p class="erro" id="pre-telefone-erro"></p>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="pre-email">*E-mail corporativo</label>
+              <input id="pre-email" name="email" type="email" autocomplete="email"
+                     placeholder="contato@suaempresa.com.br" data-validar="email"
+                     required aria-describedby="pre-email-erro">
+              <p class="erro" id="pre-email-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="pre-servico">*Serviço oferecido</label>
+              <input id="pre-servico" name="servico" type="text"
+                     placeholder="Ex.: limpeza, manutenção elétrica, suporte de TI"
+                     required aria-describedby="pre-servico-erro">
+              <p class="erro" id="pre-servico-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="pre-cobranca">*Forma de cobrança</label>
+              <select id="pre-cobranca" name="cobranca" required aria-describedby="pre-cobranca-erro">
+                <option value="">Escolha uma opção</option>
+                <option value="hora">Por hora</option>
+                <option value="dia">Por dia</option>
+                <option value="temporario">Contrato temporário</option>
+                <option value="a-combinar">A combinar depois</option>
+              </select>
+              <p class="erro" id="pre-cobranca-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label for="pre-senha">*Senha</label>
+              <input id="pre-senha" name="senha" type="password" autocomplete="new-password"
+                     placeholder="Mínimo de 8 caracteres" data-validar="senha"
+                     required aria-describedby="pre-senha-erro">
+              <p class="erro" id="pre-senha-erro"></p>
+            </div>
+
+            <div class="campo">
+              <label class="termos">
+                <input id="pre-termos" name="termos" type="checkbox" required aria-describedby="pre-termos-erro">
+                <span>*Li e aceito os termos de uso do Bee Connect.</span>
+              </label>
+              <p class="erro" id="pre-termos-erro"></p>
+            </div>
+
+            <button type="submit" class="botao botao-prestadora botao-cheio">Criar conta de prestadora</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="plaster-regular">Bee Connect</p>
+    <p>Conectando quem precisa a quem faz.</p>
+  </footer>
+
+  <script src="codigo.js"></script>
+</body>
+</html>

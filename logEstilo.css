@@ -1,0 +1,194 @@
+/* ===== Cadastro — depende dos tokens (:root) do estilo.css ===== */
+
+/* Header mais baixo que o da home (sem skyline) */
+.header-cadastro { padding-bottom: 96px; }
+
+.header-cadastro .apresentacao {
+  padding: 40px 48px 0;
+  max-width: 640px;
+}
+
+.header-cadastro .apresentacao h1 { font-size: clamp(2rem, 3.4vw, 2.6rem); }
+.header-cadastro .subtexto { margin-bottom: 0; }
+
+/* ===== Cartão principal (sobe sobre o header, como os cards da home) ===== */
+.secao-form { padding-bottom: 80px; }
+
+.cartao-form {
+  max-width: 580px;
+  margin: 0 auto;
+  background-color: var(--white);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  border-top: 6px solid var(--navy-deep);
+  text-align: left;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.cartao-form[data-tipo="prestadora"] { border-top-color: var(--honey-deep); }
+
+/* ===== Abas ===== */
+.abas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgba(46, 55, 80, 0.05);
+  border-bottom: 1px solid var(--linha);
+}
+
+.aba {
+  font: inherit;
+  color: var(--navy-deep);
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.aba strong { display: block; font-size: 1rem; margin-bottom: 2px; }
+.aba span { font-size: 0.82rem; }
+.aba:hover { opacity: 1; }
+
+.aba[aria-selected="true"] {
+  opacity: 1;
+  background-color: var(--white);
+}
+
+.aba-requisitante[aria-selected="true"] { border-bottom-color: var(--navy-deep); }
+.aba-prestadora[aria-selected="true"] { border-bottom-color: var(--honey-deep); }
+
+.aba:focus-visible {
+  outline: 3px solid var(--honey);
+  outline-offset: -3px;
+}
+
+/* ===== Painel / formulário ===== */
+.painel { padding: 32px 36px 36px; }
+
+.painel h2 { font-size: 1.35rem; margin-bottom: 6px; }
+
+.intro {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.linha-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}
+
+.campo { margin-bottom: 18px; }
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="tel"],
+.campo input[type="password"],
+.campo select {
+  width: 100%;
+  font: inherit;
+  font-size: 0.98rem;
+  color: var(--navy-deep);
+  background-color: var(--white);
+  border: 2px solid var(--linha);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: border-color 0.2s ease;
+}
+
+.campo input::placeholder { color: rgba(46, 55, 80, 0.45); }
+
+.campo input:focus,
+.campo select:focus {
+  outline: 3px solid var(--honey);
+  outline-offset: 1px;
+  border-color: var(--navy-deep);
+}
+
+.campo [aria-invalid="true"] { border-color: #C62828; }
+
+/* Mensagem de erro: só aparece quando o JS escreve algo nela */
+.erro {
+  margin: 6px 0 0;
+  font-size: 0.83rem;
+  color: #B3261E;
+}
+.erro:empty { display: none; }
+
+/* Checkbox dos termos */
+.campo .termos {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.termos input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--navy-deep);
+  flex-shrink: 0;
+}
+
+/* ===== Botões de envio ===== */
+.botao-cheio {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* honey com texto navy: contraste melhor que branco sobre laranja */
+.botao-prestadora {
+  background-color: var(--honey);
+  color: var(--navy-deep);
+}
+.botao-prestadora:hover { background-color: var(--honey-deep); }
+
+.botao-cheio:focus-visible {
+  outline: 3px solid var(--honey);
+  outline-offset: 3px;
+}
+
+/* ===== Mensagem de sucesso ===== */
+.sucesso {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background-color: var(--honey-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 640px) {
+  .header-cadastro .apresentacao { padding: 32px 20px 0; }
+  .secao-form { padding-bottom: 56px; }
+  .painel { padding: 24px 20px 28px; }
+  .linha-campos { grid-template-columns: 1fr; }
+  .aba { padding: 14px; }
+  .aba span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
